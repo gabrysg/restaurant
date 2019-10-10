@@ -1,3 +1,5 @@
+.settings
+.sts4-cache
 target/
 # Compiled class file
 *.class
