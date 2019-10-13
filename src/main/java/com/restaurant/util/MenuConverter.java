@@ -44,34 +44,34 @@ public class MenuConverter {
 		return menuInfo;
 	}
 
-	public List<PizzaInfo> getPizzaInfos(List<Pizza> pizzas) {
+	private List<PizzaInfo> getPizzaInfos(List<Pizza> pizzas) {
 		return getStream(pizzas).map(p -> new PizzaInfo(p.getName(), p.getPrice(), 0)).collect(Collectors.toList());
 	}
 
-	public List<PizzaAddInfo> getPizzaAddInfos(List<PizzaAdd> pizzaAdds) {
+	private List<PizzaAddInfo> getPizzaAddInfos(List<PizzaAdd> pizzaAdds) {
 		return getStream(pizzaAdds).map(pa -> new PizzaAddInfo(pa.getName(), pa.getPrice(), 0))
 				.collect(Collectors.toList());
 	}
 
-	public List<MainCourseInfo> getMainCourseInfos(List<MainCourse> mainCourses) {
+	private List<MainCourseInfo> getMainCourseInfos(List<MainCourse> mainCourses) {
 		return getStream(mainCourses).map(mc -> new MainCourseInfo(mc.getName(), mc.getPrice(), 0))
 				.collect(Collectors.toList());
 	}
 
-	public List<MainCourseAddInfo> getMainCourseAddInfos(List<MainCourseAdd> mainCourseAdds) {
+	private List<MainCourseAddInfo> getMainCourseAddInfos(List<MainCourseAdd> mainCourseAdds) {
 		return getStream(mainCourseAdds).map(mca -> new MainCourseAddInfo(mca.getName(), mca.getPrice(), 0))
 				.collect(Collectors.toList());
 	}
 
-	public List<SoupInfo> getSoupInfos(List<Soup> soups) {
+	private List<SoupInfo> getSoupInfos(List<Soup> soups) {
 		return getStream(soups).map(s -> new SoupInfo(s.getName(), s.getPrice(), 0)).collect(Collectors.toList());
 	}
 
-	public List<DrinkInfo> getDrinkInfos(List<Drink> drinks) {
+	private List<DrinkInfo> getDrinkInfos(List<Drink> drinks) {
 		return getStream(drinks).map(d -> new DrinkInfo(d.getName(), d.getPrice(), 0)).collect(Collectors.toList());
 	}
 
-	public List<NoteInfo> getNoteInfos(List<Note> notes) {
+	private List<NoteInfo> getNoteInfos(List<Note> notes) {
 		return getStream(notes).map(n -> new NoteInfo(n.getDescription())).collect(Collectors.toList());
 	}
 
@@ -109,7 +109,7 @@ public class MenuConverter {
 		return menuInfo;
 	}
 
-	public void setSelections(MenuInfo menuInfo, OrderInfo orderInfo) {
+	private void setSelections(MenuInfo menuInfo, OrderInfo orderInfo) {
 
 		List<PizzaInfo> menuPizzaInfos = menuInfo.getPizzas();
 		List<PizzaInfo> orderPizzaInfo = orderInfo.getPizzas();

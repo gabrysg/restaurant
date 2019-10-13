@@ -229,7 +229,7 @@
                 <label th:text="#{emailLabel}" for="email">Enter your email:</label>
                 <input class="form-control" type="email" id="email" size="30" th:name="*{name}"
                     th:field="*{name}" required th:value="${orderInfo.getName()}" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
-                <p class="alert alert-danger" th:if="${#orderInfo.hasErrors('name')}" th:errors="*{name}"></p>
+                <p class="alert alert-danger" th:errors="*{name}"></p>
             </div>
             <div class="panel-body">
                 <div>

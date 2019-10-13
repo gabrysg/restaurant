@@ -1,5 +1,6 @@
 package com.restaurant.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,9 @@ public class OrderService {
 
 	@Transactional
 	public void saveOrder(OrderInfo orderInfo) {
-		orderRepository.save(orderConverter.convertToOrder(orderInfo));
+		Order order = orderConverter.convertToOrder(orderInfo);
+		order.setDate(LocalDateTime.now());
+		orderRepository.save(order);
 	}
 
 	@Transactional
