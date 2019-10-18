@@ -40,7 +40,7 @@ public class OrderConverter {
 			order.setMainCourseAdds(getMainCourseAdds(orderInfo.getMainCourseAdds(), order));
 			order.setSoups(getSoups(orderInfo.getSoups(), order));
 			order.setDrinks(getDrinks(orderInfo.getDrinks(), order));
-			order.setNotes(getNotes(orderInfo.getNotes(), order));
+			order.setNote(getNote(orderInfo.getNote(), order));
 			return order;
 		}
 		return null;
@@ -76,8 +76,8 @@ public class OrderConverter {
 				.collect(Collectors.toList());
 	}
 
-	private List<Note> getNotes(List<NoteInfo> notes, Order order) {
-		return getStream(notes).map(n -> new Note(n.getDescription(), order)).collect(Collectors.toList());
+	private Note getNote(NoteInfo note, Order order) {
+		return new Note(note.getDescription(), order);
 	}
 
 	public List<OrderInfo> convertToOrderInfos(List<Order> orders) {
@@ -98,7 +98,7 @@ public class OrderConverter {
 			orderInfo.setMainCourseAdds(getMainCourseAddInfos(order.getMainCourseAdds()));
 			orderInfo.setSoups(getSoupInfos(order.getSoups()));
 			orderInfo.setDrinks(getDrinkInfos(order.getDrinks()));
-			orderInfo.setNotes(getNoteInfos(order.getNotes()));
+			orderInfo.setNote(getNoteInfo(order.getNote()));
 			return orderInfo;
 		} else {
 			return null;
@@ -135,8 +135,8 @@ public class OrderConverter {
 				.collect(Collectors.toList());
 	}
 
-	private List<NoteInfo> getNoteInfos(List<Note> notes) {
-		return getStream(notes).map(n -> new NoteInfo(n.getDescription())).collect(Collectors.toList());
+	private NoteInfo getNoteInfo(Note note) {
+		return new NoteInfo(note.getDescription());
 	}
 
 }

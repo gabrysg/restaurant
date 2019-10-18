@@ -223,14 +223,21 @@
                         </td>
                         <td>
                             <strong><span th:type=text id="totalPrice"
-                                th:name="*{completePrice}" th:text="${orderInfo.getCompletePrice()}"
-                                th:field="*{completePrice}">0</span></strong>
+                                    th:name="*{completePrice}"
+                                    th:text="${orderInfo.getCompletePrice()}"
+                                    th:field="*{completePrice}">0</span></strong>
                             <input type="hidden" th:field="*{completePrice}"
                                 th:value="${orderInfo.getCompletePrice()}" />
                         </td>
                     </tr>
             </tfoot>
-        </table> <br /> <br />
+        </table> <br> <br>
+            <div class="form-group">
+                <label for="notes" th:text="#{notes}">Notes</label> <textarea
+                    class="form-control rounded-0" id="notes" rows="3"
+                    th:field="*{note.description}" th:value="${orderInfo.getNote().getDescription()}"
+                    th:text="${orderInfo.getNote().getDescription()}"></textarea>
+            </div> 
             <div class="panel-body">
                 <div>
                     <input type="submit" th:name="submit" th:value="#{back}"

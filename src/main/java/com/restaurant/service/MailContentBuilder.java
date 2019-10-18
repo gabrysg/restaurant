@@ -6,6 +6,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 
+import com.restaurant.model.MailConfigurationInfo;
 import com.restaurant.model.OrderInfo;
 
 @Service
@@ -29,6 +30,12 @@ public class MailContentBuilder {
 		Context context = new Context();
 		context.setVariable("orderInfo", orderInfo);
 		return templateEngine.process("emailTemplateRestaurant", context);
+	}
+
+	public String buildConfirmationConfigurationChanged(MailConfigurationInfo mailConfigurationInfo) {
+		Context context = new Context();
+		context.setVariable("mailConfigurationInfo", mailConfigurationInfo);
+		return templateEngine.process("emailTemplateConfigurationConfirmation", context);
 	}
 
 }

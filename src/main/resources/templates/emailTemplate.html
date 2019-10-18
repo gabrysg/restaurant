@@ -114,11 +114,17 @@
                     </td>
                     <td>
                         <strong><span th:type=text id="totalPrice" th:name="totalPrice"
-                            th:text="${orderInfo.getCompletePrice()}">0</span></strong>
+                                th:text="${orderInfo.getCompletePrice()}">0</span></strong>
                     </td>
                 </tr>
         </tfoot>
-        </table>
+        </table> <br> <br>
+        <div class="form-group" th:if= "${orderInfo.getNote().getDescription() != ''}">
+             <strong><label for="notes" th:text="#{notes}">Notes</label></strong> <textarea
+                class="form-control rounded-0" id="notes" rows="3"
+                th:value="${orderInfo.getNote().getDescription()}"
+                th:text="${orderInfo.getNote().getDescription()}"></textarea>
+        </div>
     </div>
 </body>
 </html>

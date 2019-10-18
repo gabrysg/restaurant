@@ -40,7 +40,7 @@ public class MenuConverter {
 		menuInfo.setMainCourseAdds(getMainCourseAddInfos(menu.getMainCourseAdds()));
 		menuInfo.setSoups(getSoupInfos(menu.getSoups()));
 		menuInfo.setDrinks(getDrinkInfos(menu.getDrinks()));
-		menuInfo.setNotes(getNoteInfos(menu.getNotes()));
+		menuInfo.setNote(getNoteInfo(menu.getNote()));
 		return menuInfo;
 	}
 
@@ -71,8 +71,12 @@ public class MenuConverter {
 		return getStream(drinks).map(d -> new DrinkInfo(d.getName(), d.getPrice(), 0)).collect(Collectors.toList());
 	}
 
-	private List<NoteInfo> getNoteInfos(List<Note> notes) {
-		return getStream(notes).map(n -> new NoteInfo(n.getDescription())).collect(Collectors.toList());
+	private NoteInfo getNoteInfo(Note note) {
+		if (note != null) {
+			return new NoteInfo(note.getDescription());
+		} else {
+			return new NoteInfo();
+		}
 	}
 
 	public OrderInfo convertToOrderInfo(MenuInfo menuInfo) {
@@ -87,7 +91,7 @@ public class MenuConverter {
 				getStream(menuInfo.getMainCourseAdds()).filter(p -> p.isSelected()).collect(Collectors.toList()));
 		orderInfo.setSoups(getStream(menuInfo.getSoups()).filter(p -> p.isSelected()).collect(Collectors.toList()));
 		orderInfo.setDrinks(getStream(menuInfo.getDrinks()).filter(p -> p.isSelected()).collect(Collectors.toList()));
-		orderInfo.setNotes(getStream(menuInfo.getNotes()).collect(Collectors.toList()));
+		orderInfo.setNote(menuInfo.getNote());
 
 		orderInfo.setCompletePrice(getCompletePrice(orderInfo));
 		return orderInfo;

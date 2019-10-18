@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -43,6 +44,6 @@ public class Order {
 	@OneToMany(mappedBy = "ordered", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Drink> drinks;
 
-	@OneToMany(mappedBy = "ordered", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Note> notes;
+	@OneToOne(mappedBy = "ordered", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Note note;
 }

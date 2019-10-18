@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -46,7 +47,6 @@ public class Menu {
 	@JoinTable(name = "menus_drinks", joinColumns = @JoinColumn(name = "menu_id"), inverseJoinColumns = @JoinColumn(name = "drink_id"))
 	private List<Drink> drinks;
 
-	@ManyToMany
-	@JoinTable(name = "menus_notes", joinColumns = @JoinColumn(name = "menu_id"), inverseJoinColumns = @JoinColumn(name = "note_id"))
-	private List<Note> notes;
+	@OneToOne(mappedBy = "menu")
+	private Note note;
 }

@@ -15,7 +15,7 @@ public class MenuInfo {
 	private List<MainCourseAddInfo> mainCourseAdds;
 	private List<SoupInfo> soups;
 	private List<DrinkInfo> drinks;
-	private List<NoteInfo> notes;
+	private NoteInfo note;
 	private double totalPrice = 0.0;
 	private String orderName;
 }

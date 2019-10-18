@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
 <head>
 <title th:text="#{title}">On-line Restaurant</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -14,8 +16,8 @@
             <h1 th:text="#{introduction}">Introduction</h1>
             <h5 th:text="#{description}">Description</h5>
             <h5 th:text="#{welcome}">Welcome</h5>
-            <p><a href="/menu" th:href="@{/menu}" th:text="#{viewMenu}"
-                class="btn btn-large btn-success">Order</a></p>
+            <p><a href="/menu" th:href="@{/menu}"
+                th:text="#{viewMenu}" class="btn btn-large btn-success">Order</a></p>
         </div>
         <div th:replace="fragments/footer :: footer"></div>
     </div>

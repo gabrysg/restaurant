@@ -1,14 +1,11 @@
 package com.restaurant.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -21,11 +18,12 @@ public class Note {
 	private long id;
 	private String description;
 
-	@ManyToMany(mappedBy = "notes")
-	private List<Menu> menu;
+	@OneToOne
+	@JoinColumn(name = "menu_id", referencedColumnName = "id")
+	private Menu menu;
 
-	@ManyToOne
-	@JoinColumn(name = "ordered_id", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "ordered_id", referencedColumnName = "id")
 	private Order ordered;
 
 	public Note() {

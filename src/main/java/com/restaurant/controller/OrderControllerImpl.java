@@ -50,6 +50,7 @@ public class OrderControllerImpl implements OrderController {
 			@ModelAttribute("orderInfo") @Valid OrderInfo orderInfo, BindingResult result) {
 		MenuInfo menuInfo = menuService.getActualMenuWithSelections(orderInfo);
 		menuInfo.setOrderName(orderInfo.getName());
+		menuInfo.setNote(orderInfo.getNote());
 		model.addAttribute("menuInfo", menuInfo);
 		return "order";
 	}

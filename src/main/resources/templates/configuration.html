@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="#{title}">On-line Restaurant</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div th:replace="fragments/header :: header"></div>
+        <div class="container">
+
+            <h1 th:text="#{configuration}">Configuration</h1>
+            <h5 th:text="#{configurationDescription}">Description</h5>
+            <form method="post" th:object="${mailConfigurationInfo}"><br> <br>
+                <div class="form-group row">
+                    <div class="col-xs-5 col-md-4 col-md-offset-4">
+                        <th:block th:if="${mailConfigurationInfo.getError() != null}">
+                            <span th:text="#{sendEmailError}" class="text-danger"></span>
+                            <br>
+                        </th:block>
+                        <br> <label for="host" th:text="#{host}">Host</label>
+                        <input class="form-control rounded-0" id="host" th:field="*{mailHost}"
+                            th:value="${mailConfigurationInfo.getMailHost()}"></input>
+                        <span class="help-block hidden" th:text="#{hostRequired}"></span>
+                        <br> <label for="port" th:text="#{port}">Port</label>
+                        <input class="form-control rounded-0" id="port" th:field="*{mailPort}"
+                            th:value="${mailConfigurationInfo.getMailPort()}"></input>
+                        <span class="help-block hidden" th:text="#{portRequired}"></span>
+                        <br> <label for="username" th:text="#{username}">Username</label>
+                        <input class="form-control rounded-0" id="username"
+                            th:field="*{mailUsername}"
+                            th:value="${mailConfigurationInfo.getMailUsername()}" type="email"></input>
+                        <span class="help-block hidden" th:text="#{usernameRequired}"></span>
+                        <br> <label for="password" th:text="#{password}">Password</label>
+                        <input class="form-control rounded-0" id="password"
+                            th:field="*{mailPassword}"
+                            th:value="${mailConfigurationInfo.getMailPassword()}" type="password"></input>
+                        <span class="help-block hidden" th:text="#{passwordRequired}"></span>
+                        <br>
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" id="tlsEnabled"
+                                th:field="*{mailSmtpStartTlsEnable}"
+                                th:value="${mailConfigurationInfo.isMailSmtpStartTlsEnable()}"
+                                type="checkbox"></input>
+                            <label for="tlsEnabled" class="custom-control-label"
+                                th:text="#{tlsEnabled}">Tls enabled</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row"></div>
+                <div class="panel-body">
+                    <div>
+                        <input type="submit" th:value="#{useDefault}"
+                            th:formaction="@{/useDefaultConfiguration}"
+                            class="btn btn-large btn-primary" />
+                        <input type="submit" th:name="submit" th:value="#{save}"
+                            th:formaction="@{/saveConfiguration}"
+                            class="btn btn-large btn-success pull-right" />
+                    </div>
+                </div></form>
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</body>
+</html>

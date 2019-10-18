@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="#{title}">On-line Restaurant</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div th:replace="fragments/header :: header"></div>
+        <div class="container" style="padding-bottom: 15%">
+            <h1 th:text="#{defaultConfigurationConfirmation}">Default Configuration</h1>
+            <h5 th:text="#{defaultConfigurationConfirmationDescription}">Description</h5>
+            <form method="post" th:object="${mailConfigurationInfo}"><br> <br>
+                <div class="container text-left col-md-4 col-md-offset-4">
+                    <table class="table table-striped table-hover form-narrow table-bordered" style="width: 400px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label th:text="#{host}">Host</label>
+                                </td>
+                                <td>
+                                    <span th:text="${mailConfigurationInfo.getMailHost()}">Host</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label th:text="#{port}">Port</label>
+                                </td>
+                                <td>
+                                    <span th:text="${mailConfigurationInfo.getMailPort()}"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label th:text="#{username}">Username</label>
+                                </td>
+                                <td>
+                                     <span th:text="${mailConfigurationInfo.getMailUsername()}"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td th:if="${mailConfigurationInfo.isMailSmtpStartTlsEnable()}">
+                                    <label th:text="#{tlsEnabled}">Tls enabled</label>
+                                </td>
+                                <td th:unless="${mailConfigurationInfo.isMailSmtpStartTlsEnable()}">
+                                     <label th:text="#{tlsDisabled}">Tls disabled</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group row"></div></form>
+            <p><a href="/menu" th:href="@{/menu}" th:text="#{viewMenu}"
+                class="btn btn-large btn-success">View MENU</a></p>
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</body>
+</html>

@@ -336,8 +336,8 @@
                         </td>
                         <td>
                             <strong><span th:type=text id="totalPrice"
-                                th:name="*{totalPrice}" th:value="${menuInfo.getTotalPrice()}"
-                                th:field="*{totalPrice}" th:text="${menuInfo.getTotalPrice()}">0</span></strong>
+                                    th:name="*{totalPrice}" th:value="${menuInfo.getTotalPrice()}"
+                                    th:field="*{totalPrice}" th:text="${menuInfo.getTotalPrice()}">0</span></strong>
                         </td>
                         <td>
                             <input type="hidden" th:field="*{orderName}"
@@ -346,6 +346,12 @@
                     </tr>
             </tfoot>
         </table>
+            <div class="form-group">
+                <label for="notes" th:text="#{notes}">Notes</label> <textarea
+                    class="form-control rounded-0" id="notes" rows="3"
+                    th:field="*{note.description}" th:value="${menuInfo.getNote().getDescription()}"
+                    th:text="${menuInfo.getNote().getDescription()}"></textarea>
+            </div>
             <p><input type="submit" th:name="submit" th:value="#{orderPreview}"
                     class="btn btn-large btn-success" /></p>
         </form>

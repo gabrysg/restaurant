@@ -40,7 +40,6 @@ public class OrderConverterTest {
 
 	@Before
 	public void setup() {
-
 	}
 
 	@Test

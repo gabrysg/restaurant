@@ -19,5 +19,5 @@ public class OrderInfo {
 	private List<MainCourseAddInfo> mainCourseAdds;
 	private List<SoupInfo> soups;
 	private List<DrinkInfo> drinks;
-	private List<NoteInfo> notes;
+	private NoteInfo note;
 }
