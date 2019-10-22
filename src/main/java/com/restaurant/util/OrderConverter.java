@@ -77,7 +77,7 @@ public class OrderConverter {
 	}
 
 	private Note getNote(NoteInfo note, Order order) {
-		return new Note(note.getDescription(), order);
+		return note != null ? new Note(note.getDescription(), order) : null;
 	}
 
 	public List<OrderInfo> convertToOrderInfos(List<Order> orders) {
@@ -136,7 +136,7 @@ public class OrderConverter {
 	}
 
 	private NoteInfo getNoteInfo(Note note) {
-		return new NoteInfo(note.getDescription());
+		return note != null ? new NoteInfo(note.getDescription()) : null;
 	}
 
 }

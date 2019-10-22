@@ -63,6 +63,7 @@ public class OrderConverterTest {
 		assertTrue(order.getSoups().isEmpty());
 		assertNotNull(order.getDrinks());
 		assertTrue(order.getDrinks().isEmpty());
+		assertNull(order.getNote());
 	}
 
 	@Test
