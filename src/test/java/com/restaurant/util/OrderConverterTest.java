@@ -17,6 +17,7 @@ import com.restaurant.entity.Drink;
 import com.restaurant.entity.MainCourse;
 import com.restaurant.entity.MainCourseAdd;
 import com.restaurant.entity.MenuItem;
+import com.restaurant.entity.Note;
 import com.restaurant.entity.Order;
 import com.restaurant.entity.Pizza;
 import com.restaurant.entity.PizzaAdd;
@@ -25,6 +26,7 @@ import com.restaurant.model.DrinkInfo;
 import com.restaurant.model.MainCourseAddInfo;
 import com.restaurant.model.MainCourseInfo;
 import com.restaurant.model.MenuItemInfo;
+import com.restaurant.model.NoteInfo;
 import com.restaurant.model.OrderInfo;
 import com.restaurant.model.PizzaAddInfo;
 import com.restaurant.model.PizzaInfo;
@@ -88,6 +90,7 @@ public class OrderConverterTest {
 		assertOrderCollection(order.getSoups(), orderInfo.getSoups());
 		assertNotNull(order.getDrinks());
 		assertOrderCollection(order.getDrinks(), orderInfo.getDrinks());
+		assertEquals(orderInfo.getNote().getDescription(), order.getNote().getDescription());
 	}
 
 	@Test
@@ -99,24 +102,25 @@ public class OrderConverterTest {
 	@Test
 	public void testConvertToOrderInfoWithEmptyFields() {
 
-		OrderInfo orderinfo = orderConverter.convertToOrderInfo(new Order());
+		OrderInfo orderInfo = orderConverter.convertToOrderInfo(new Order());
 
-		assertNotNull(orderinfo);
-		assertNull(orderinfo.getName());
-		assertEquals(0.0, orderinfo.getCompletePrice(), 0);
-		assertNull(orderinfo.getDate());
-		assertNotNull(orderinfo.getPizzas());
-		assertTrue(orderinfo.getPizzas().isEmpty());
-		assertNotNull(orderinfo.getPizzaAdds());
-		assertTrue(orderinfo.getPizzaAdds().isEmpty());
-		assertNotNull(orderinfo.getMainCourses());
-		assertTrue(orderinfo.getMainCourses().isEmpty());
-		assertNotNull(orderinfo.getMainCourseAdds());
-		assertTrue(orderinfo.getMainCourseAdds().isEmpty());
-		assertNotNull(orderinfo.getSoups());
-		assertTrue(orderinfo.getSoups().isEmpty());
-		assertNotNull(orderinfo.getDrinks());
-		assertTrue(orderinfo.getDrinks().isEmpty());
+		assertNotNull(orderInfo);
+		assertNull(orderInfo.getName());
+		assertEquals(0.0, orderInfo.getCompletePrice(), 0);
+		assertNull(orderInfo.getDate());
+		assertNotNull(orderInfo.getPizzas());
+		assertTrue(orderInfo.getPizzas().isEmpty());
+		assertNotNull(orderInfo.getPizzaAdds());
+		assertTrue(orderInfo.getPizzaAdds().isEmpty());
+		assertNotNull(orderInfo.getMainCourses());
+		assertTrue(orderInfo.getMainCourses().isEmpty());
+		assertNotNull(orderInfo.getMainCourseAdds());
+		assertTrue(orderInfo.getMainCourseAdds().isEmpty());
+		assertNotNull(orderInfo.getSoups());
+		assertTrue(orderInfo.getSoups().isEmpty());
+		assertNotNull(orderInfo.getDrinks());
+		assertTrue(orderInfo.getDrinks().isEmpty());
+		assertNull(orderInfo.getNote());
 	}
 
 	@Test
@@ -141,6 +145,7 @@ public class OrderConverterTest {
 		assertOrderInfoCollection(orderInfo.getSoups(), order.getSoups());
 		assertNotNull(orderInfo.getDrinks());
 		assertOrderInfoCollection(orderInfo.getDrinks(), order.getDrinks());
+		assertEquals(order.getNote().getDescription(), orderInfo.getNote().getDescription());
 	}
 
 	@Test
@@ -202,6 +207,7 @@ public class OrderConverterTest {
 		drinkInfos.add(new DrinkInfo("drink1", 10.0, 1));
 		drinkInfos.add(new DrinkInfo("drink2", 20.0, 2));
 		orderInfo.setDrinks(drinkInfos);
+		orderInfo.setNote(new NoteInfo("With onion"));
 
 		return orderInfo;
 	}
@@ -235,6 +241,7 @@ public class OrderConverterTest {
 		drinks.add(new Drink("drink1", 10.0, 1));
 		drinks.add(new Drink("drink2", 20.0, 2));
 		order.setDrinks(drinks);
+		order.setNote(new Note("With onion"));
 
 		return order;
 	}
